@@ -9,6 +9,6 @@ import { Item } from '../../interfaces/item';
   styleUrls: ['./comment.component.scss'],
 })
 export class CommentComponent {
-  @Input() comment: Item;
+  @Input() comment: Comment;
   dateFormat = Config.dateFormat;
 }

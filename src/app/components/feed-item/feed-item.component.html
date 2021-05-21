@@ -1,47 +1,51 @@
 <mat-card>
 
-  <!-- Points -->
-  <span class="large-points" title="{{ item.points | i18nPlural: pointsMapping }}">{{ item.points }}</span>
+	<!-- Points -->
+	<span class="large-points" title="{{ item?.points | i18nPlural: pointsMapping }}">{{ item?.points }}</span>
+	<!-- Mirar si l'usuari actual ha vootat el comentari SINO icono favorite_border -->
+	<span class="large-points">
+		<button mat-icon-button color="primart"> <mat-icon>favorite</mat-icon> </button>
+	</span>
 
-  <div class="content">
+	<div class="content">
 
-    <!-- Title with domain -->
-    <mat-card-title *ngIf="item.url">
-      <a [href]="item.url" target="_blank" rel="noopener">{{ item.title }}</a> ({{ item.url }})
-    </mat-card-title>
+		<!-- Title with domain -->
+		<mat-card-title *ngIf="item?.url">
+		<a [href]="item?.url" target="_blank" rel="noopener">{{ item?.title }}</a> ({{ item?.url }})
+		</mat-card-title>
 
-    <!-- Title without domain -->
-    <mat-card-title *ngIf="!item.url">
-      <a [routerLink]="['/submissions', item.id]">
-        {{ item.title }}
-      </a>
-    </mat-card-title>
+		<!-- Title without domain -->
+		<mat-card-title *ngIf="!item?.url">
+		<a [routerLink]="['/item', item?.id]">
+			{{ item?.title }}
+		</a>
+		</mat-card-title>
 
-    <!-- Subtitle with meta data -->
-    <mat-card-subtitle>
+		<!-- Subtitle with meta data -->
+		<mat-card-subtitle>
 
-      <!-- User -->
-      <span *ngIf="item.author">
-        By <a [routerLink]="['/user', item.author]" title="Posted by {{ item.author }}">{{ item.author }}</a>
-      </span> |
+		<!-- User -->
+		<span *ngIf="item.author">
+			By <a [routerLink]="['/user', item?.author]" title="Posted by {{ item?.author }}">{{ item?.author }}</a>
+		</span> |
 
-      <!-- Points -->
-      <span class="points">
-        {{ item.points | i18nPlural: pointsMapping }} |
-      </span>
+		<!-- Points -->
+		<span class="points">
+			{{ item.points | i18nPlural: pointsMapping }} |
+		</span>
 
-      <!-- Time -->
-      <span title="Posted on {{ item.date | date: dateFormat }}">
-        {{ item.date }}
-      </span> |
+		<!-- Time -->
+		<span title="Posted on {{ item?.date | date: dateFormat }}">
+			{{ item.date }}
+		</span> |
 
-      <!-- Comments -->
-      <span>
-        <a [routerLink]="['/comments']">{{ item.comments.length | i18nPlural: commentsMapping }}</a>
-      </span>
+		<!-- Comments -->
+		<span>
+			<a [routerLink]="['/comments']">{{ item?.comments | i18nPlural: commentsMapping }}</a>
+		</span>
 
-    </mat-card-subtitle>
+		</mat-card-subtitle>
 
-  </div>
+	</div>
 
 </mat-card>

@@ -24,7 +24,7 @@ import { NewComponent } from './containers/new/new.component';
 import { ShowComponent } from './containers/show/show.component';
 import { ItemComponent } from './containers/item/item.component';
 import { AskComponent } from './containers/ask/ask.component';
-import { JobsComponent } from './containers/jobs/jobs.component';
+import { SubmitComponent } from './containers/submit/submit.component';
 import { UserComponent } from './containers/user/user.component';
 import { NotFoundComponent } from './containers/not-found/not-found.component';
 
@@ -35,7 +35,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FeedItemComponent } from './components/feed-item/feed-item.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
-import { SubmitComponent } from './containers/submit/submit.component';
+import { SubmissionsComponent } from './containers/submissions/submissions.component';
+
 
 @NgModule({
 	declarations: [
@@ -47,13 +48,13 @@ import { SubmitComponent } from './containers/submit/submit.component';
 		ShowComponent,
 		NotFoundComponent,
 		ItemComponent,
-		JobsComponent,
 		AskComponent,
+		SubmitComponent,
 		UserComponent,
 		CommentComponent,
 		PaginationComponent,
 		AbstractBaseListComponent,
-		SubmitComponent,
+  SubmissionsComponent,
 	],
 	imports: [
 		BrowserModule,

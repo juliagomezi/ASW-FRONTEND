@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
@@ -21,7 +21,6 @@ export class AbstractBaseListComponent implements OnInit {
 	constructor(
 		private titleService: Title,
 		private apiService: ApiService,
-		private router: Router,
 		private route: ActivatedRoute,
 	) { }
 
@@ -31,7 +30,9 @@ export class AbstractBaseListComponent implements OnInit {
 		this.titleService.setTitle(Config.getTitle(this.routeTitle));
 
 		console.log(this.serviceMethod)
-		this.route.params.subscribe(params => {
+		// this.route.params user/:id
+		// this.route.queryParams user?id={id}
+		this.route.queryParams.subscribe(params => {
 			// Get the current feed items by passing the service method (top, new, .etc)
 			if (typeof this.apiService[this.serviceMethod] === 'function') {
 				this.items$ = this.apiService[this.serviceMethod](params);

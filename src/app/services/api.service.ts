@@ -8,7 +8,7 @@ import { Item } from '../interfaces/item';
 import { User } from '../interfaces/user';
 import { partitionArray } from '@angular/compiler/src/util';
 
-export const API = 'https://node-hnapi.herokuapp.com';
+export const API = 'https://api-hackerbadnews.herokuapp.com/api';
 
 const httpOptions = {
 	headers: new HttpHeaders({
@@ -36,36 +36,41 @@ export class ApiService {
 	getSubmissionsPoints(): Observable<FeedItem[]> {
 		console.log("getSubmissionsPoints");
 		httpOptions.params = new HttpParams().set('filter', 'points');
-		return this.http.get<FeedItem[]>(`https://api-hackerbadnews.herokuapp.com/api/submissions`, httpOptions);
+		return this.http.get<FeedItem[]>(`${API}/submissions`, httpOptions);
 	}
 
 	getSubmissionsNews(): Observable<FeedItem[]> {
 		console.log("getSubmissionsNews");
 		httpOptions.params = new HttpParams().set('filter', 'news');
-		return this.http.get<FeedItem[]>(`https://api-hackerbadnews.herokuapp.com/api/submissions`, httpOptions);
+		return this.http.get<FeedItem[]>(`${API}/submissions`, httpOptions);
 	}
 
 	getSubmissionsUser(id: string): Observable<FeedItem[]> {
 		console.log("getSubmissionsUser");
-		httpOptions.params = new HttpParams().set('id', id['name']);
-		console.log(id)
-		return this.http.get<FeedItem[]>(`https://api-hackerbadnews.herokuapp.com/api/submissions`, httpOptions);
+		httpOptions.params = new HttpParams().set('id', id['id']);
+		return this.http.get<FeedItem[]>(`${API}/submissions`, httpOptions);
 	}
 
 	getSubmissionsAsk(): Observable<FeedItem[]> {
 		console.log("getSubmissionsAsk");
 		httpOptions.params = new HttpParams().set('type', 'ask');
-		return this.http.get<FeedItem[]>(`https://api-hackerbadnews.herokuapp.com/api/submissions`, httpOptions);
+		return this.http.get<FeedItem[]>(`${API}/submissions`, httpOptions);
 	}
 
 	getSubmission(id: number): Observable<Item> {
 		console.log("getSubmission");
-		return this.http.get<Item>(`https://api-hackerbadnews.herokuapp.com/api/submissions/{{id}}`, httpOptions);
+		return this.http.get<Item>(`${API}/submissions/${id}`, httpOptions);
+	}
+
+	getCommentsUser(id: string): Observable<FeedItem[]> {
+		console.log("getCommentsUser");
+		httpOptions.params = new HttpParams().set('id', id['id']);
+		return this.http.get<FeedItem[]>(`${API}/comments`, httpOptions);
 	}
 
 	getUser(name: string): Observable<User> {
 		console.log("getUser");
 		httpOptions.params = new HttpParams().set('id', name);
-		return this.http.get<User>(`https://api-hackerbadnews.herokuapp.com/api/users`, httpOptions);
+		return this.http.get<User>(`${API}/users`, httpOptions);
 	}
 }

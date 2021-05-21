@@ -6,15 +6,15 @@ import { AbstractBaseListComponent } from '../../components/abstract-base-list/a
 import { ApiService } from '../../services/api.service';
 
 @Component({
-	selector: 'app-new',
+	selector: 'app-submissions',
 	templateUrl: '../../components/abstract-base-list/abstract-base-list.component.html',
 	styleUrls: ['../../components/abstract-base-list/abstract-base-list.component.scss'],
 })
 
-export class NewComponent extends AbstractBaseListComponent {
-	routeName = 'new';
-	routeTitle = 'New';
-	serviceMethod = 'getSubmissionsNews';
+export class SubmissionsComponent extends AbstractBaseListComponent {
+	routeName = 'submissions';
+	routeTitle = 'Submissions';
+	serviceMethod = 'getSubmissionsUser';
 
 	constructor(
 		titleService: Title,
@@ -23,4 +23,5 @@ export class NewComponent extends AbstractBaseListComponent {
 	) {
 		super(titleService, apiService, route);
 	}
+
 }

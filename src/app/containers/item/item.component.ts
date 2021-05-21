@@ -28,7 +28,6 @@ export class ItemComponent implements OnInit {
 		this.apiService
 			.getSubmission(params['id'])
 			.subscribe((data: Item) => {
-				console.log(data)
 				this.item = data;
 				this.titleService.setTitle(Config.getTitle(data.title));
 			});

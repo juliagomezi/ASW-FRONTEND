@@ -7,24 +7,24 @@
 
       <!-- User -->
       <span class="user">
-        <a [routerLink]="['/user', comment.user]" title="Posted by {{ comment.user }}">{{ comment.user }}</a>
+        <a [routerLink]="['/user', comment?.user]" title="Posted by {{ comment?.user }}">{{ comment?.user }}</a>
       </span> |
 
       <!-- Time -->
-      <span title="Posted on {{ comment.time | date: dateFormat }}" class="time">
-        {{ comment.time_ago }}
+      <span title="Posted on {{ comment?.date | date: dateFormat }}" class="time">
+        {{ comment?.date }}
       </span>
 
     </div>
 
     <!-- Content -->
-    <div *ngIf="comment.content" [innerHTML]="comment.content" class="content"></div>
+    <div *ngIf="comment?.text" [innerHTML]="comment?.text" class="content"></div>
 
   </div>
 
   <!-- Nested comments -->
   <app-comment
-    *ngFor="let comment of comment.comments"
+    *ngFor="let comment of comment?.replies"
     [comment]="comment">
   </app-comment>
 
