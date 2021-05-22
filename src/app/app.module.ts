@@ -36,7 +36,11 @@ import { FeedItemComponent } from './components/feed-item/feed-item.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { SubmissionsComponent } from './containers/submissions/submissions.component';
+import { AbstractBaseListCommentsComponent } from './components/abstract-base-list-comments/abstract-base-list-comments.component';
+import { CommentItemComponent } from './components/comment-item/comment-item.component';
 
+// Pipes
+import { DateFormatPipePipe } from './pipes/date-format-pipe.pipe'
 
 @NgModule({
 	declarations: [
@@ -54,7 +58,10 @@ import { SubmissionsComponent } from './containers/submissions/submissions.compo
 		CommentComponent,
 		PaginationComponent,
 		AbstractBaseListComponent,
-  SubmissionsComponent,
+		SubmissionsComponent,
+		AbstractBaseListCommentsComponent,
+		CommentItemComponent,
+  		DateFormatPipePipe
 	],
 	imports: [
 		BrowserModule,

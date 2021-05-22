@@ -6,6 +6,7 @@ export interface Comment {
 	votes: number;
 	date: Date;
 	contributionId: number;
+	contributionTitle: string;
 	fatherId: number;
 	replies: Array<Comment>;
 }

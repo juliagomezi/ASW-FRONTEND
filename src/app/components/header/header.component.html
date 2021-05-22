@@ -10,6 +10,7 @@
     <a
       *ngFor="let navItem of navItems"
       [routerLink]="navItem.link"
+	  [queryParams]="navItem.params"
       routerLinkActive="active"
       mat-button>
       {{ navItem.title }}

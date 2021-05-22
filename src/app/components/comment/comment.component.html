@@ -1,31 +1,39 @@
 <div class="thread">
 
-  <div class="comment">
+	<div class="comment">
 
-    <!-- Title -->
-    <div class="title">
+		<!-- Title -->
+		<div class="title">
 
-      <!-- User -->
-      <span class="user">
-        <a [routerLink]="['/user', comment?.user]" title="Posted by {{ comment?.user }}">{{ comment?.user }}</a>
-      </span> |
+		<!-- Mirar si l'usuari actual ha votat el comentari -->
+		<!-- <span class="large-points" *ngIf="isFavourite(item?.id)">
+			<button mat-icon-button color="primary" (click)="unvote(item?.id)"> <mat-icon>favorite</mat-icon> </button>
+		</span>
+		<span class="large-points" *ngIf="!isFavourite(item?.id)">
+			<button mat-icon-button color="primary" (click)="vote(item?.id)"> <mat-icon>favorite_border</mat-icon> </button>
+		</span> -->
 
-      <!-- Time -->
-      <span title="Posted on {{ comment?.date | date: dateFormat }}" class="time">
-        {{ comment?.date }}
-      </span>
+		<!-- User -->
+		<span class="user">
+			<a [routerLink]="['/user', comment?.author]" title="Posted by {{ comment?.author }}">{{ comment?.author }}</a>
+		</span> |
 
-    </div>
+		<!-- Time -->
+		<span class="time">
+			Posted on {{ comment?.date | dateFormatPipe }}
+		</span>
 
-    <!-- Content -->
-    <div *ngIf="comment?.text" [innerHTML]="comment?.text" class="content"></div>
+		</div>
 
-  </div>
+		<!-- Content -->
+		<div *ngIf="comment?.text" [innerHTML]="comment?.text" class="content"></div>
 
-  <!-- Nested comments -->
-  <app-comment
-    *ngFor="let comment of comment?.replies"
-    [comment]="comment">
-  </app-comment>
+	</div>
+
+	<!-- Nested comments -->
+	<app-comment
+		*ngFor="let comment of comment?.replies"
+		[comment]="comment">
+	</app-comment>
 
 </div>

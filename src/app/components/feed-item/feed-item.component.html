@@ -2,9 +2,12 @@
 
 	<!-- Points -->
 	<span class="large-points" title="{{ item?.points | i18nPlural: pointsMapping }}">{{ item?.points }}</span>
-	<!-- Mirar si l'usuari actual ha vootat el comentari SINO icono favorite_border -->
-	<span class="large-points">
-		<button mat-icon-button color="primart"> <mat-icon>favorite</mat-icon> </button>
+	<!-- Mirar si l'usuari actual ha votat el comentari -->
+	<span class="large-points" *ngIf="isFavourite(item?.id)">
+		<button mat-icon-button color="primary" (click)="unvote(item?.id)"> <mat-icon>favorite</mat-icon> </button>
+	</span>
+	<span class="large-points" *ngIf="!isFavourite(item?.id)">
+		<button mat-icon-button color="primary" (click)="vote(item?.id)"> <mat-icon>favorite_border</mat-icon> </button>
 	</span>
 
 	<div class="content">
@@ -35,13 +38,13 @@
 		</span>
 
 		<!-- Time -->
-		<span title="Posted on {{ item?.date | date: dateFormat }}">
-			{{ item.date }}
+		<span>
+			Posted on {{ item?.date | dateFormatPipe }}
 		</span> |
 
 		<!-- Comments -->
 		<span>
-			<a [routerLink]="['/comments']">{{ item?.comments | i18nPlural: commentsMapping }}</a>
+			<a [routerLink]="['/item', item?.id]">{{ item?.comments | i18nPlural: commentsMapping }}</a>
 		</span>
 
 		</mat-card-subtitle>

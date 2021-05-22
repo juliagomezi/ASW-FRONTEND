@@ -1,0 +1,44 @@
+<mat-card>
+
+	<!-- Points -->
+	<span class="large-points" title="{{ item?.votes | i18nPlural: pointsMapping }}">{{ item?.votes }}</span>
+	<!-- Mirar si l'usuari actual ha votat el comentari -->
+	<span class="large-points" *ngIf="isFavourite(item?.id)">
+		<button mat-icon-button color="primary" (click)="unvote(item?.id)"> <mat-icon>favorite</mat-icon> </button>
+	</span>
+	<span class="large-points" *ngIf="!isFavourite(item?.id)">
+		<button mat-icon-button color="primary" (click)="vote(item?.id)"> <mat-icon>favorite_border</mat-icon> </button>
+	</span>
+
+	<div class="content">
+
+		<!-- Title without domain -->
+		<mat-card-title>
+			<a [routerLink]="['/item', item?.id]">
+				{{ item?.text }}
+			</a>
+		</mat-card-title>
+
+		<!-- Subtitle with meta data -->
+		<mat-card-subtitle>
+
+			<!-- User -->
+			<span *ngIf="item.author">
+				By <a [routerLink]="['/user', item?.author]" title="Posted by {{ item?.author }}">{{ item?.author }}</a>
+			</span> |
+
+			<!-- Contribution -->
+			<span *ngIf="item.author">
+				On <a [routerLink]="['/item', item?.contributionId]">{{ item?.contributionTitle }}</a>
+			</span> |
+
+			<!-- Time -->
+			<span>
+				Posted on {{ item?.date | dateFormatPipe }}
+			</span>
+
+		</mat-card-subtitle>
+
+	</div>
+
+</mat-card>

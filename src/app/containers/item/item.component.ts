@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 import { Config } from '../../config';
-import { Item } from '../../interfaces/item';
+import { FeedItem } from '../../interfaces/feed-item';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -12,7 +12,8 @@ import { ApiService } from '../../services/api.service';
 	styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent implements OnInit {
-	item: Item;
+	item: FeedItem;
+	favouriteItems: FeedItem[]
 	dateFormat = Config.dateFormat;
 	pointsMapping = Config.pointsMapping;
 	commentsMapping = Config.commentsMapping;
@@ -25,12 +26,36 @@ export class ItemComponent implements OnInit {
 
 	ngOnInit() {
 		this.route.params.subscribe((params: ParamMap) => {
-		this.apiService
-			.getSubmission(params['id'])
-			.subscribe((data: Item) => {
-				this.item = data;
-				this.titleService.setTitle(Config.getTitle(data.title));
+		this.apiService.getSubmission(params['id']).subscribe(e => {
+				this.item = e;
+				this.titleService.setTitle(Config.getTitle(e.title));
 			});
 		});
+		this.apiService.getFavouriteSubmissions().subscribe(e => {
+			this.favouriteItems = e;
+		});
+	}
+
+	isFavourite(id: number) {
+		for(let fav of this.favouriteItems) {
+			if (fav.id == id) return true;
+		}
+		return false;
+	}
+
+	vote(id: number) {
+		this.apiService.voteSubmission(id).subscribe(e => {
+			this.favouriteItems.push(e);
+		})
+	}
+
+	unvote(id: number) {
+		this.apiService.unvoteSubmission(id).subscribe(e => {
+			for( var i = 0; i < this.favouriteItems.length; i++){ 
+				if ( this.favouriteItems[i].id == e.id) { 
+					this.favouriteItems.splice(i, 1); 
+				}
+			}
+		})
 	}
 }

@@ -4,18 +4,18 @@ import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
 import { Config } from '../../config';
-import { FeedItem } from '../../interfaces/feed-item';
+import { Comment } from '../../interfaces/comment';
 import { ApiService } from '../../services/api.service';
 
 @Component({
-  selector: 'app-abstract--base-list',
-  templateUrl: './abstract-base-list.component.html',
-  styleUrls: ['./abstract-base-list.component.scss'],
+	selector: 'app-abstract-base-list-comments',
+	templateUrl: './abstract-base-list-comments.component.html',
+	styleUrls: ['./abstract-base-list-comments.component.scss']
 })
 
-export class AbstractBaseListComponent implements OnInit {
-	items$: Observable<FeedItem[]>;
-	favouriteItems: FeedItem[];
+export class AbstractBaseListCommentsComponent implements OnInit {
+	items$: Observable<Comment[]>;
+	favouriteItems: Comment[];
 	routeName: string;
 	routeTitle: string;
 	serviceMethod: string;
@@ -40,8 +40,8 @@ export class AbstractBaseListComponent implements OnInit {
 				this.items$ = this.apiService[this.serviceMethod](params);
 			}
 		});
-		
-		this.apiService.getFavouriteSubmissions().subscribe(e => {
+
+		this.apiService.getFavouriteComments().subscribe(e => {
 			this.favouriteItems = e;
 		})
 	}

@@ -2,16 +2,16 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-import { AbstractBaseListComponent } from '../../components/abstract-base-list/abstract-base-list.component';
+import { AbstractBaseListCommentsComponent } from '../../components/abstract-base-list-comments/abstract-base-list-comments.component';
 import { ApiService } from '../../services/api.service';
 
 @Component({
 	selector: 'app-show',
-	templateUrl: '../../components/abstract-base-list/abstract-base-list.component.html',
-	styleUrls: ['../../components/abstract-base-list/abstract-base-list.component.scss'],
+	templateUrl: '../../components/abstract-base-list-comments/abstract-base-list-comments.component.html',
+	styleUrls: ['../../components/abstract-base-list-comments/abstract-base-list-comments.component.scss'],
 })
 
-export class ShowComponent extends AbstractBaseListComponent {
+export class ShowComponent extends AbstractBaseListCommentsComponent {
 	routeName = 'show';
 	routeTitle = 'Show';
 	serviceMethod = 'getCommentsUser';

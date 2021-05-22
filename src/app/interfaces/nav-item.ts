@@ -1,4 +1,5 @@
 export interface NavItem {
-  title: string;
-  link: string;
+	title: string;
+	link: string;
+	params: any;
 }

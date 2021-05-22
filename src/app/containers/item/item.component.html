@@ -1,50 +1,66 @@
 <div class="container">
 
-  <!-- Item -->
-  <mat-card class="item">
+	<!-- Item -->
+	<mat-card class="item">
 
-    <!-- Title with url -->
-    <mat-card-title *ngIf="item?.url">
-      <a [href]="item?.url" target="_blank" rel="noopener">{{ item?.title }}</a> ({{ item?.url }})
-    </mat-card-title>
+		<!-- Title with url -->
+		<mat-card-title *ngIf="item?.url">
+			<!-- Mirar si l'usuari actual ha votat el comentari -->
+			<span class="large-points" *ngIf="isFavourite(item?.id)">
+				<button mat-icon-button color="primary" (click)="unvote(item?.id)"> <mat-icon>favorite</mat-icon> </button>
+			</span>
+			<span class="large-points" *ngIf="!isFavourite(item?.id)">
+				<button mat-icon-button color="primary" (click)="vote(item?.id)"> <mat-icon>favorite_border</mat-icon> </button>
+			</span>
+			<a [href]="item?.url" target="_blank" rel="noopener">{{ item?.title }}</a> ({{ item?.url }})
+		</mat-card-title>
 
-    <!-- Title without url -->
-    <mat-card-title *ngIf="!item?.url">
-      {{ item?.title }}
-    </mat-card-title>
+		<!-- Title without url -->
+		<mat-card-title *ngIf="!item?.url">
+			<!-- Mirar si l'usuari actual ha votat el comentari -->
+			<span class="large-points" *ngIf="isFavourite(item?.id)">
+				<button mat-icon-button color="primary" (click)="unvote(item?.id)"> <mat-icon>favorite</mat-icon> </button>
+			</span>
+			<span class="large-points" *ngIf="!isFavourite(item?.id)">
+				<button mat-icon-button color="primary" (click)="vote(item?.id)"> <mat-icon>favorite_border</mat-icon> </button>
+			</span>
+			{{ item?.title }}
+		</mat-card-title>
 
-    <!-- Subtitle with meta data -->
-    <mat-card-subtitle>
+		<!-- Subtitle with meta data -->
+		<mat-card-subtitle>
 
-      <!-- User -->
-      <span *ngIf="item?.author">
-        By <a [routerLink]="['/user', item?.author]" title="Posted by {{ item?.author }}">{{ item?.author }}</a>
-      </span> |
+		<!-- User -->
+		<span *ngIf="item?.author">
+			By <a [routerLink]="['/user', item?.author]" title="Posted by {{ item?.author }}">{{ item?.author }}</a>
+		</span> |
 
-      <!-- Points -->
-      <span *ngIf="item?.points">
-        {{ item?.points | i18nPlural: pointsMapping }}
-      </span> |
+		<!-- Points -->
+		<span *ngIf="item?.points">
+			{{ item?.points | i18nPlural: pointsMapping }}
+		</span> |
 
-      <!-- Time -->
-      <span title="Posted on {{ item?.date | date: dateFormat }}">
-        {{ item?.date }}
-      </span>
+		<!-- Time -->
+		<span>
+			Posted on {{ item?.date | dateFormatPipe }}
+		</span>
 
-    </mat-card-subtitle>
+		</mat-card-subtitle>
 
-    <!-- Content -->
-    <div *ngIf="item?.text" [innerHTML]="item?.text" class="text"></div>
+		<!-- Content -->
+		<div *ngIf="item?.text" [innerHTML]="item?.text" class="text">{{ item?.text }}</div>
 
-  </mat-card>
+		
 
-  <!-- Comments -->
-  <mat-card class="comments">
-    <h2>{{ item?.comments.length | i18nPlural: commentsMapping }}</h2>
-    <app-comment
-      *ngFor="let comment of item?.comments"
-      [comment]="comment">
-    </app-comment>
-  </mat-card>
+	</mat-card>
+
+	<!-- Comments -->
+	<mat-card class="comments">
+		<h2>{{ item?.comments.length | i18nPlural: commentsMapping }}</h2>
+		<app-comment
+		*ngFor="let comment of item?.comments"
+		[comment]="comment">
+		</app-comment>
+	</mat-card>
 
 </div>
