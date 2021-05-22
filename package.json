@@ -2,6 +2,7 @@
   "name": "ng-hackernews",
   "version": "1.0.0",
   "scripts": {
+    "start:prod": "node server.js",
     "_deploy": "ng build --prod --base-href=\"https://wbeeftink.github.io/ng-hackernews/\" && npx ngh --dir=\"dist/ng-hackernews\"",
     "_serve_locally": "ng build && cd build/ng-hackernews && angular-http-server -o",
     "ng": "ng",
