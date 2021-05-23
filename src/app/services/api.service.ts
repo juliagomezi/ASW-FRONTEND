@@ -102,4 +102,10 @@ export class ApiService {
 		httpOptions.params = new HttpParams();
 		return this.http.delete<Comment>(`${API}/comments/${id}/vote`, httpOptions);
 	}
+
+	newSubmission(body: any): Observable<FeedItem> {
+		console.log("newSubmission");
+		httpOptions.params = new HttpParams();
+		return this.http.post<FeedItem>(`${API}/submissions`, body, httpOptions)
+	}
 }
