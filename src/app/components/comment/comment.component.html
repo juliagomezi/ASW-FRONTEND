@@ -6,12 +6,12 @@
 		<div class="title">
 
 		<!-- Mirar si l'usuari actual ha votat el comentari -->
-		<!-- <span class="large-points" *ngIf="isFavourite(item?.id)">
-			<button mat-icon-button color="primary" (click)="unvote(item?.id)"> <mat-icon>favorite</mat-icon> </button>
+		<span class="large-points" *ngIf="isFavourite(comment?.id)">
+			<button mat-icon-button color="primary" (click)="unvote(comment?.id)"> <mat-icon>favorite</mat-icon> </button>
 		</span>
-		<span class="large-points" *ngIf="!isFavourite(item?.id)">
-			<button mat-icon-button color="primary" (click)="vote(item?.id)"> <mat-icon>favorite_border</mat-icon> </button>
-		</span> -->
+		<span class="large-points" *ngIf="!isFavourite(comment?.id)">
+			<button mat-icon-button color="primary" (click)="vote(comment?.id)"> <mat-icon>favorite_border</mat-icon> </button>
+		</span>
 
 		<!-- User -->
 		<span class="user">
@@ -33,7 +33,7 @@
 	<!-- Nested comments -->
 	<app-comment
 		*ngFor="let comment of comment?.replies"
-		[comment]="comment">
+		[comment]="comment" [favouriteItems]="favouriteItems">
 	</app-comment>
 
 </div>

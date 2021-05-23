@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 
 import { Config } from '../../config';
 import { FeedItem } from '../../interfaces/feed-item';
+import { Comment } from '../../interfaces/comment';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -14,6 +15,7 @@ import { ApiService } from '../../services/api.service';
 export class ItemComponent implements OnInit {
 	item: FeedItem;
 	favouriteItems: FeedItem[]
+	favouriteComments: Comment[]
 	dateFormat = Config.dateFormat;
 	pointsMapping = Config.pointsMapping;
 	commentsMapping = Config.commentsMapping;
@@ -33,6 +35,9 @@ export class ItemComponent implements OnInit {
 		});
 		this.apiService.getFavouriteSubmissions().subscribe(e => {
 			this.favouriteItems = e;
+		});
+		this.apiService.getFavouriteComments().subscribe(e => {
+			this.favouriteComments = e;
 		});
 	}
 

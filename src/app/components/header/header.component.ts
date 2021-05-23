@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService, currentUser } from 'src/app/services/api.service';
 
 import { NavItem } from '../../interfaces/nav-item';
@@ -8,7 +8,8 @@ import { NavItem } from '../../interfaces/nav-item';
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+
+export class HeaderComponent implements OnInit {
 
 	constructor(private apiService: ApiService) { }
 
@@ -19,4 +20,14 @@ export class HeaderComponent {
 		{ title: 'Ask', link: 'ask', params: '' },
 		{ title: 'Submit', link: 'submit', params: '' },
 	];
+
+	navUser = { title: 'User', link: `user/${currentUser}`, params: '' };
+
+	user;
+
+	ngOnInit() {
+		this.apiService.getUser(currentUser).subscribe(e => {
+			this.user = e;
+		})
+	}
 }

@@ -59,7 +59,7 @@
 		<h2>{{ item?.comments.length | i18nPlural: commentsMapping }}</h2>
 		<app-comment
 		*ngFor="let comment of item?.comments"
-		[comment]="comment">
+		[comment]="comment" [favouriteItems]="favouriteComments">
 		</app-comment>
 	</mat-card>
 

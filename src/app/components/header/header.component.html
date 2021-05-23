@@ -1,29 +1,28 @@
 <mat-toolbar color="primary">
-  <div class="container">
+	<div class="container">
 
-    <!-- Logo -->
-    <a routerLink="/" class="logo">
-      <img src="assets/logo.svg" alt="NgHackernews">
-    </a>
+		<!-- Logo -->
+		<a routerLink="/" class="logo">
+			<img src="assets/logo.svg" alt="NgHackernews">
+		</a>
 
-    <!-- Navigation items -->
-    <a
-      *ngFor="let navItem of navItems"
-      [routerLink]="navItem.link"
-	  [queryParams]="navItem.params"
-      routerLinkActive="active"
-      mat-button>
-      {{ navItem.title }}
-    </a>
+		<!-- Navigation items -->
+		<a
+			*ngFor="let navItem of navItems"
+			[routerLink]="navItem.link"
+			[queryParams]="navItem.params"
+			routerLinkActive="active"
+			mat-button>
+			{{ navItem.title }}
+		</a>
 
-    <a
-      mat-button
-      href="https://github.com/wbeeftink/ng-hackernews"
-      target="_blank"
-      rel="noopener"
-      class="made-by">
-      Made with Angular
-    </a>
+		<a
+			mat-button
+			[routerLink]="navUser.link"
+			rel="noopener"
+			class="made-by">
+			{{ user.username }} ({{ user.karma }})
+		</a>
 
-  </div>
+	</div>
 </mat-toolbar>

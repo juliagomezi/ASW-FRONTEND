@@ -34,8 +34,8 @@ export class CommentItemComponent {
 
 	unvote(id: number) {
 		this.apiService.unvoteComment(id).subscribe(e => {
-			for( var i = 0; i < this.favouriteItems.length; i++){ 
-				if ( this.favouriteItems[i].id == e.id) { 
+			for (var i = 0; i < this.favouriteItems.length; i++){ 
+				if (this.favouriteItems[i].id == e.id) { 
 					this.favouriteItems.splice(i, 1); 
 				}
 			}

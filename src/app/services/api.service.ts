@@ -5,11 +5,11 @@ import { Observable } from 'rxjs';
 
 import { FeedItem } from '../interfaces/feed-item';
 import { Comment } from '../interfaces/comment';
-import { Item } from '../interfaces/item';
 import { User } from '../interfaces/user';
 
 export const API = 'https://api-hackerbadnews.herokuapp.com/api';
 export const currentUser = 'sergi'
+export const APIKey = '2ee65c012885efab362272540aab4f80017af3ef'
 
 const httpOptions = {
 	headers: new HttpHeaders({
