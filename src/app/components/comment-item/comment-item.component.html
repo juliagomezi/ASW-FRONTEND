@@ -28,13 +28,18 @@
 			</span> |
 
 			<!-- Contribution -->
-			<span *ngIf="item.author">
+			<span *ngIf="item.contributionTitle">
 				On <a [routerLink]="['/item', item?.contributionId]">{{ item?.contributionTitle }}</a>
 			</span> |
 
 			<!-- Time -->
 			<span>
 				Posted on {{ item?.date | dateFormatPipe }}
+			</span> |
+
+			<!-- Replies -->
+			<span>
+				<a [routerLink]="['/item', item?.id]">comments</a>
 			</span>
 
 		</mat-card-subtitle>
