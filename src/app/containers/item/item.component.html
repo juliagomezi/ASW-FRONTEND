@@ -49,9 +49,17 @@
 
 		<!-- Content -->
 		<div *ngIf="item?.text" [innerHTML]="item?.text" class="text">{{ item?.text }}</div>
+	</mat-card>
 
-		
-
+	<!-- Reply form -->
+	<mat-card class="comments">
+		<form [formGroup]="replyForm" (ngSubmit)="onSubmit()">
+			<h2>Your reply</h2>
+			<mat-form-field>
+				<textarea matInput value="" id="reply" type="text" formControlName="reply"></textarea>
+			</mat-form-field>
+			<button mat-raised-button color="Submit">Reply</button>
+		</form>
 	</mat-card>
 
 	<!-- Comments -->

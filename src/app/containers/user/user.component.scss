@@ -48,3 +48,19 @@ mat-form-field {
 	width: 100%;
 	margin-top: -1.25em;
 }
+
+.container {
+	margin-top: 64px;
+
+	> * + * {
+		display: block;
+		margin-top: 1vh;
+	}
+}
+
+@media(max-width: 599px) {
+
+	.container {
+		margin-top: 56px;
+	}
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
 import { Config } from '../../config';
@@ -20,10 +21,16 @@ export class ItemComponent implements OnInit {
 	pointsMapping = Config.pointsMapping;
 	commentsMapping = Config.commentsMapping;
 
+	replyForm = this.formBuilder.group({
+		reply: ''
+	});
+
 	constructor(
 		private titleService: Title,
 		private apiService: ApiService,
 		private route: ActivatedRoute,
+		private router: Router,
+		private formBuilder: FormBuilder,
 	) {}
 
 	ngOnInit() {
@@ -62,5 +69,9 @@ export class ItemComponent implements OnInit {
 				}
 			}
 		})
+	}
+
+	onSubmit() {
+		console.warn(this.replyForm.value);
 	}
 }
