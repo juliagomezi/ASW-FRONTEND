@@ -1,10 +1,10 @@
 # ASW FRONTEND
 
-Alvaro Andrés
-Marc Fernández
-Júlia Gómez
-Oriol Prat
-Sergi Vidiella
+- Alvaro Andrés
+- Marc Fernández
+- Júlia Gómez
+- Oriol Prat
+- Sergi Vidiella
 
 ## NgHackernews
 
