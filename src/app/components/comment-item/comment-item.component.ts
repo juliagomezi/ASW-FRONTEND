@@ -29,6 +29,7 @@ export class CommentItemComponent {
 	vote(id: number) {
 		this.apiService.voteComment(id).subscribe(e => {
 			this.favouriteItems.push(e);
+			this.item.votes++;
 		})
 	}
 
@@ -37,6 +38,7 @@ export class CommentItemComponent {
 			for (var i = 0; i < this.favouriteItems.length; i++){ 
 				if (this.favouriteItems[i].id == e.id) { 
 					this.favouriteItems.splice(i, 1); 
+					this.item.votes--;
 				}
 			}
 		})

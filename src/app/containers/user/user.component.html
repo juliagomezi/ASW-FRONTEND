@@ -16,67 +16,68 @@
 	</mat-card>
 
 	<mat-card>
-		<!-- Email current user-->
-		<section *ngIf="isCurrentUser()" class="about">
-			<h2>Email</h2>
-			<div [innerHTML]="user?.email" class="content"></div>
-		</section>
-		<!-- API Key current user-->
-		<section *ngIf="isCurrentUser()" class="about">
-			<h2>API Key</h2>
-			<div [innerHTML]="getCurrentUserAPIKey()" class="content"></div>
-		</section>
-		<!-- About no current user-->
-		<section *ngIf="!isCurrentUser()" class="about">
-			<h2>About</h2>
-			<div [innerHTML]="user?.about" class="content"></div>
-		</section>
-		<!-- About current user-->
-		<section *ngIf="isCurrentUser()" class="about">
-			<h2>About</h2>
-			<mat-form-field>
-				<textarea matInput value="{{ user?.about }}" id="title" type="text" formControlName="text"></textarea>
-			</mat-form-field>
-		</section>
+		<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+			<!-- Email current user-->
+			<section *ngIf="isCurrentUser()" class="about">
+				<h2>Email</h2>
+				<div [innerHTML]="user?.email" class="content"></div>
+			</section>
+			<!-- API Key current user-->
+			<section *ngIf="isCurrentUser()" class="about">
+				<h2>API Key</h2>
+				<div [innerHTML]="getCurrentUserAPIKey()" class="content"></div>
+			</section>
+			<!-- About no current user-->
+			<section *ngIf="!isCurrentUser()" class="about">
+				<h2>About</h2>
+				<div [innerHTML]="user?.about" class="content"></div>
+			</section>
+			<!-- About current user-->
+			<section *ngIf="isCurrentUser()" class="about">
+				<h2>About</h2>
+				<mat-form-field>
+					<textarea matInput value="{{ user?.about }}" id="about" type="text" formControlName="about"></textarea>
+				</mat-form-field>
+			</section>
 
-		<!-- Links -->
-		<section class="links">
-			<h2>Links</h2>
-			<ul>
-				<li>
-				<a href="submissions?id={{ user?.username }}">
-					Submissions
-				</a>
-				</li>
-				<li>
-				<a href="show?id={{ user?.username }}">
-					Comments
-				</a>
-				</li>
-			</ul>
-		</section>
-		
-		<!-- Favourite links -->
-		<section class="links" *ngIf="isCurrentUser()">
-			<ul>
-				<li>
-				<a href="submissions?id={{ user?.username }}">
-					Favourite submissions
-				</a>
-				</li>
-				<li>
-				<a href="show?id={{ user?.username }}">
-					Favourite comments
-				</a>
-				</li>
-			</ul>
-		</section>
+			<!-- Links -->
+			<section class="links">
+				<h2>Links</h2>
+				<ul>
+					<li>
+					<a href="submissions?id={{ user?.username }}">
+						Submissions
+					</a>
+					</li>
+					<li>
+					<a href="show?id={{ user?.username }}">
+						Comments
+					</a>
+					</li>
+				</ul>
+			</section>
+			
+			<!-- Favourite links -->
+			<section class="links" *ngIf="isCurrentUser()">
+				<ul>
+					<li>
+					<a href="submissions?id={{ user?.username }}">
+						Favourite submissions
+					</a>
+					</li>
+					<li>
+					<a href="show?id={{ user?.username }}">
+						Favourite comments
+					</a>
+					</li>
+				</ul>
+			</section>
 
-		<!-- Update button -->
-		<section class="links" *ngIf="isCurrentUser()">
-			<button mat-raised-button color="Submit">Update</button>
-		</section>
-
+			<!-- Update button -->
+			<section class="links" *ngIf="isCurrentUser()">
+				<button mat-raised-button color="Submit">Update</button>
+			</section>
+		</form>
 	</mat-card>
 
 </div>

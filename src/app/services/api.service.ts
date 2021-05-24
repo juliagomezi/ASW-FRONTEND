@@ -108,4 +108,10 @@ export class ApiService {
 		httpOptions.params = new HttpParams();
 		return this.http.post<FeedItem>(`${API}/submissions`, body, httpOptions)
 	}
+
+	updateUser(body: any): Observable<User> {
+		console.log("newSubmission");
+		httpOptions.params = new HttpParams().set('id', currentUser);
+		return this.http.put<User>(`${API}/users`, body, httpOptions)
+	}
 }
