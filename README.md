@@ -1,4 +1,12 @@
-# NgHackernews
+# ASW FRONTEND
+
+Alvaro Andrés
+Marc Fernández
+Júlia Gómez
+Oriol Prat
+Sergi Vidiella
+
+## NgHackernews
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f4251935-6957-41b1-8402-2c0e0432098d/deploy-status)](https://app.netlify.com/sites/ng-hackernews/deploys)
 
