@@ -25,16 +25,18 @@ export class SubmitComponent {
 
 	onSubmit() {
 		console.warn(this.submitForm.value);
-		this.apiService.newSubmission(this.submitForm.value)
-			.subscribe(
-				response => {
-					this.router.navigate(['/new']);
-				},
-				err => {
-					if (err.status == 302) {
-						this.router.navigate(['/item', err.error.query[0].substring(49)]);
-					}
-				});
+		if (this.submitForm.valid) {
+			this.apiService.newSubmission(this.submitForm.value)
+				.subscribe(
+					response => {
+						this.router.navigate(['/new']);
+					},
+					err => {
+						if (err.status == 302) {
+							this.router.navigate(['/item', err.error.query[0].substring(49)]);
+						}
+					});
+		}
 	}
 
 
