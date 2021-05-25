@@ -40,7 +40,10 @@ import { AbstractBaseListCommentsComponent } from './components/abstract-base-li
 import { CommentItemComponent } from './components/comment-item/comment-item.component';
 
 // Pipes
-import { DateFormatPipePipe } from './pipes/date-format-pipe.pipe'
+import { DateFormatPipePipe } from './pipes/date-format-pipe.pipe';
+import { ItemCommentComponent } from './containers/item-comment/item-comment.component';
+import { FavouriteSubmissionsComponent } from './containers/favourite-submissions/favourite-submissions.component';
+import { FavouriteCommentsComponent } from './containers/favourite-comments/favourite-comments.component'
 
 @NgModule({
 	declarations: [
@@ -61,7 +64,10 @@ import { DateFormatPipePipe } from './pipes/date-format-pipe.pipe'
 		SubmissionsComponent,
 		AbstractBaseListCommentsComponent,
 		CommentItemComponent,
-  		DateFormatPipePipe
+  		DateFormatPipePipe,
+    ItemCommentComponent,
+    FavouriteSubmissionsComponent,
+    FavouriteCommentsComponent
 	],
 	imports: [
 		BrowserModule,

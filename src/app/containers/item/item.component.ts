@@ -22,7 +22,7 @@ export class ItemComponent implements OnInit {
 	commentsMapping = Config.commentsMapping;
 
 	replyForm = this.formBuilder.group({
-		reply: ''
+		text: ''
 	});
 
 	constructor(
@@ -71,7 +71,13 @@ export class ItemComponent implements OnInit {
 		})
 	}
 
-	onSubmit() {
-		console.warn(this.replyForm.value);
+	onSubmit(id: number) {
+		this.apiService.commentSubmission(id, this.replyForm.value).subscribe(e => {
+			if (!this.item?.comments) {
+				var comments: Comment[] = [];
+				this.item.comments = comments;
+			}
+			this.item?.comments?.push(e);
+		})
 	}
 }

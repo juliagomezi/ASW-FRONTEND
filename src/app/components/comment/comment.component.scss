@@ -22,6 +22,7 @@ span + span {
 
 .content {
   margin-bottom: 24px;
+  padding-left: 47px;
 }
 
 @media(max-width: 399px) {
@@ -30,3 +31,8 @@ span + span {
     padding-left: 12px;
   }
 }
+
+.nolink {
+	text-decoration: none;
+}
+

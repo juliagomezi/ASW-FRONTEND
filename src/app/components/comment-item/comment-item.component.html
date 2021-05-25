@@ -14,7 +14,7 @@
 
 		<!-- Title without domain -->
 		<mat-card-title>
-			<a [routerLink]="['/item', item?.id]">
+			<a [routerLink]="['/comment', item?.id]">
 				{{ item?.text }}
 			</a>
 		</mat-card-title>
@@ -39,7 +39,7 @@
 
 			<!-- Replies -->
 			<span>
-				<a [routerLink]="['/item', item?.id]">comments</a>
+				<a [routerLink]="['/comment', item?.id]">comments</a>
 			</span>
 
 		</mat-card-subtitle>

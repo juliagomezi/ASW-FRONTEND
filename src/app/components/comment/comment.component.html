@@ -5,28 +5,35 @@
 		<!-- Title -->
 		<div class="title">
 
-		<!-- Mirar si l'usuari actual ha votat el comentari -->
-		<span class="large-points" *ngIf="isFavourite(comment?.id)">
-			<button mat-icon-button color="primary" (click)="unvote(comment?.id)"> <mat-icon>favorite</mat-icon> </button>
-		</span>
-		<span class="large-points" *ngIf="!isFavourite(comment?.id)">
-			<button mat-icon-button color="primary" (click)="vote(comment?.id)"> <mat-icon>favorite_border</mat-icon> </button>
-		</span>
+			<!-- Mirar si l'usuari actual ha votat el comentari -->
+			<span class="large-points" *ngIf="isFavourite(comment?.id)">
+				<button mat-icon-button color="primary" (click)="unvote(comment?.id)"> <mat-icon>favorite</mat-icon> </button>
+			</span>
+			<span class="large-points" *ngIf="!isFavourite(comment?.id)">
+				<button mat-icon-button color="primary" (click)="vote(comment?.id)"> <mat-icon>favorite_border</mat-icon> </button>
+			</span>
 
-		<!-- User -->
-		<span class="user">
-			<a [routerLink]="['/user', comment?.author]" title="Posted by {{ comment?.author }}">{{ comment?.author }}</a>
-		</span> |
+			<!-- User -->
+			<span class="user">
+				<a [routerLink]="['/user', comment?.author]" title="Posted by {{ comment?.author }}">{{ comment?.author }}</a>
+			</span> |
 
-		<!-- Time -->
-		<span class="time">
-			Posted on {{ comment?.date | dateFormatPipe }}
-		</span>
+			<!-- Time -->
+			<span class="time">
+				Posted on {{ comment?.date | dateFormatPipe }}
+			</span>
 
 		</div>
 
-		<!-- Content -->
-		<div *ngIf="comment?.text" [innerHTML]="comment?.text" class="content"></div>
+		<!-- Content i comment -->
+		<div class="content">
+			<span *ngIf="comment?.contributionId">
+				<a class="nolink" [routerLink]="['/comment', comment?.id]">{{ comment?.text }}</a>
+			</span>
+			<span *ngIf="comment?.contributionId">
+				<a [routerLink]="['/comment', comment?.id]">comment</a>
+			</span>
+		</div>
 
 	</div>
 

@@ -103,6 +103,12 @@ export class ApiService {
 		return this.http.delete<Comment>(`${API}/comments/${id}/vote`, httpOptions);
 	}
 
+	getComment(id: number): Observable<Comment> {
+		console.log("getComment");
+		httpOptions.params = new HttpParams();
+		return this.http.get<Comment>(`${API}/comments/${id}`, httpOptions);
+	}
+
 	newSubmission(body: any): Observable<FeedItem> {
 		console.log("newSubmission");
 		httpOptions.params = new HttpParams();
@@ -113,5 +119,17 @@ export class ApiService {
 		console.log("newSubmission");
 		httpOptions.params = new HttpParams().set('id', currentUser);
 		return this.http.put<User>(`${API}/users`, body, httpOptions)
+	}
+
+	commentSubmission(id: number, body: any): Observable<Comment> {
+		console.log("commentSubmission");
+		httpOptions.params = new HttpParams();
+		return this.http.post<Comment>(`${API}/submissions/${id}/`, body, httpOptions)
+	}
+
+	commentComment(id: number, body: any): Observable<Comment> {
+		console.log("commentComment");
+		httpOptions.params = new HttpParams();
+		return this.http.post<Comment>(`${API}/comments/${id}/`, body, httpOptions)
 	}
 }
