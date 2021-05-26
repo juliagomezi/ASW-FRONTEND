@@ -1,5 +1,9 @@
+mat-card {
+	padding-top: 25pt;
+}
+
 mat-card-title {
-	margin: 10pt;
+	margin: 20pt;
 }
 
 button {
@@ -7,7 +11,13 @@ button {
 }
 
 mat-form-field {
-	width: 100%;
+	width: 90%;
+	margin: 10pt;
+}
+
+form {
+	margin-left: 10pt;
+	margin-right: 10pt;
 }
 
 .container {

@@ -43,8 +43,8 @@
 		</span> |
 
 		<!-- Comments -->
-		<span>
-			<a [routerLink]="['/item', item?.id]">{{ item?.comments | i18nPlural: commentsMapping }}</a>
+		<span *ngIf="item?.comments">
+			<a [routerLink]="['/item', item?.id]">{{ item?.comments.length }} comments</a>
 		</span>
 
 		</mat-card-subtitle>

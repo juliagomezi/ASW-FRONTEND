@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 // Container components
 import { TopComponent } from './containers/top/top.component';
@@ -65,9 +66,9 @@ import { FavouriteCommentsComponent } from './containers/favourite-comments/favo
 		AbstractBaseListCommentsComponent,
 		CommentItemComponent,
   		DateFormatPipePipe,
-    ItemCommentComponent,
-    FavouriteSubmissionsComponent,
-    FavouriteCommentsComponent
+		ItemCommentComponent,
+		FavouriteSubmissionsComponent,
+		FavouriteCommentsComponent
 	],
 	imports: [
 		BrowserModule,
@@ -82,6 +83,7 @@ import { FavouriteCommentsComponent } from './containers/favourite-comments/favo
 		MatIconModule,
 		MatInputModule,
 		MatListModule,
+		MatFormFieldModule,
 		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 	],
 	providers: [

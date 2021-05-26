@@ -31,6 +31,7 @@ export class FeedItemComponent  {
 			this.favouriteItems.push(e);
 			this.item.points++;
 		})
+		console.log(this.item);
 	}
 
 	unvote(id: number) {
