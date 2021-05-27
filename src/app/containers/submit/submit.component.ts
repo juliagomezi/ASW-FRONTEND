@@ -49,6 +49,7 @@ export class SubmitComponent {
       return {'missing': true};
     }
 
+
     if (control.get('url').value || control.get('text').value) {
       return null;
     } else {
