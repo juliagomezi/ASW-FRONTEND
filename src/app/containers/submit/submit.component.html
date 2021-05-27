@@ -14,9 +14,9 @@
 
 				<mat-form-field>
 					<mat-label>URL</mat-label>
-					<input matInput placeholder="URL" name="url" id="url" type="url" formControlName="url">
-					<mat-error *ngIf="submitForm.hasError('error')"> Enter a valid url </mat-error>
-					<mat-error *ngIf="submitForm.hasError('error')"> Enter either url or text or both </mat-error>
+					<input matInput placeholder="URL" name="url" id="url" formControlName="url">
+					<mat-error *ngIf="submitForm.controls.url.errors?.pattern"> Enter a valid url </mat-error>
+					<mat-error *ngIf="submitForm.errors?.missing"> Enter either url or text or both </mat-error>
 				</mat-form-field>
 
 				<mat-form-field>
