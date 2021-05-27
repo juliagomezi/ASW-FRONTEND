@@ -6,6 +6,8 @@
 - Oriol Prat
 - Sergi Vidiella
 
+DEPLOY: https://hacker-bad-news.herokuapp.com/top
+
 ## NgHackernews
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f4251935-6957-41b1-8402-2c0e0432098d/deploy-status)](https://app.netlify.com/sites/ng-hackernews/deploys)
