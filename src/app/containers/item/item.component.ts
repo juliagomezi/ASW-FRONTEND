@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, ParamMap, Resolve, Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
@@ -15,11 +15,15 @@ import { ApiService } from '../../services/api.service';
 })
 export class ItemComponent implements OnInit {
 	item: FeedItem;
-	favouriteItems: FeedItem[]
-	favouriteComments: Comment[]
+	favouriteItems: FeedItem[];
+	favouriteComments: Comment[];
 	dateFormat = Config.dateFormat;
 	pointsMapping = Config.pointsMapping;
 	commentsMapping = Config.commentsMapping;
+
+	getSubmission = false;
+	getFavouriteSubmissions = false;
+	getFavouriteComments = false;
 
 	replyForm = this.formBuilder.group({
 		text: ''
@@ -35,22 +39,25 @@ export class ItemComponent implements OnInit {
 
 	ngOnInit() {
 		this.route.params.subscribe((params: ParamMap) => {
-		this.apiService.getSubmission(params['id']).subscribe(e => {
+			this.apiService.getSubmission(params['id']).subscribe(e => {
 				this.item = e;
 				this.titleService.setTitle(Config.getTitle(e.title));
+				this.getSubmission = true;
 			});
 		});
 		this.apiService.getFavouriteSubmissions().subscribe(e => {
 			this.favouriteItems = e;
+			this.getFavouriteSubmissions = true;
 		});
 		this.apiService.getFavouriteComments().subscribe(e => {
 			this.favouriteComments = e;
+			this.getFavouriteComments = true;
 		});
 	}
 
 	isFavourite(id: number) {
 		for(let fav of this.favouriteItems) {
-			if (fav.id == id) return true;
+			if (fav?.id == id) return true;
 		}
 		return false;
 	}

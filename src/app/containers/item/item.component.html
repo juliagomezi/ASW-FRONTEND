@@ -1,7 +1,7 @@
 <div class="container">
 
 	<!-- Item -->
-	<mat-card class="item">
+	<mat-card class="item" *ngIf="getSubmission && getFavouriteSubmissions && getFavouriteComments">
 
 		<!-- Title with url -->
 		<mat-card-title *ngIf="item?.url">

@@ -42,9 +42,14 @@
 			Posted on {{ item?.date | dateFormatPipe }}
 		</span> |
 
-		<!-- Comments -->
-		<span>
-			<a [routerLink]="['/item', item?.id]">comments</a>
+		<!-- Si Comments -->
+		<span *ngIf="item?.comments">
+			<a [routerLink]="['/item', item?.id]"> {{ item?.comments?.length }} comments</a>
+		</span>
+
+		<!-- No Comments -->
+		<span *ngIf="!item?.comments">
+			<a [routerLink]="['/item', item?.id]"> 0 comments</a>
 		</span>
 
 		</mat-card-subtitle>

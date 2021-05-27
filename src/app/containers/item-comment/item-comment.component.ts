@@ -19,6 +19,10 @@ export class ItemCommentComponent implements OnInit {
 	pointsMapping = Config.pointsMapping;
 	commentsMapping = Config.commentsMapping;
 
+
+	getComment = false;
+	getFavouriteComments = false;
+
 	replyForm = this.formBuilder.group({
 		text: ''
 	});
@@ -34,16 +38,18 @@ export class ItemCommentComponent implements OnInit {
 		this.route.params.subscribe((params: ParamMap) => {
 		this.apiService.getComment(params['id']).subscribe(e => {
 				this.item = e;
+				this.getComment = true;
 			});
 		});
 		this.apiService.getFavouriteComments().subscribe(e => {
 			this.favouriteItems = e;
+			this.getFavouriteComments = true;
 		});
 	}
 
 	isFavourite(id: number) {
 		for(let fav of this.favouriteItems) {
-			if (fav.id == id) return true;
+			if (fav?.id == id) return true;
 		}
 		return false;
 	}
