@@ -62,13 +62,18 @@
 		</form>
 	</mat-card>
 
-	<!-- Comments -->
-	<mat-card class="comments">
+	<!-- Si Comments -->
+	<mat-card *ngIf="item?.comments" class="comments">
 		<h2>{{ item?.comments?.length | i18nPlural: commentsMapping }}</h2>
 		<app-comment
-		*ngFor="let comment of item?.comments"
-		[comment]="comment" [favouriteItems]="favouriteComments">
+			*ngFor="let comment of item?.comments"
+			[comment]="comment" [favouriteItems]="favouriteComments">
 		</app-comment>
+	</mat-card>
+
+	<!-- No Comments -->
+	<mat-card *ngIf="!item?.comments" class="comments">
+		<h2>0 comments</h2>
 	</mat-card>
 
 </div>

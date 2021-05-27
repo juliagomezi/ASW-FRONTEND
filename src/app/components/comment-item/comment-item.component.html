@@ -38,8 +38,8 @@
 			</span> |
 
 			<!-- Replies -->
-			<span *ngIf="item?.replies">
-				<a [routerLink]="['/comment', item?.id]">{{ item?.replies.length }} comments</a>
+			<span>
+				<a [routerLink]="['/comment', item?.id]">comments</a>
 			</span>
 
 		</mat-card-subtitle>

@@ -58,8 +58,8 @@
 	<mat-card *ngIf="item?.replies" class="comments">
 		<h2>{{ item?.replies?.length | i18nPlural: commentsMapping }}</h2>
 		<app-comment
-		*ngFor="let comment of item?.replies"
-		[comment]="comment" [favouriteItems]="favouriteItems">
+			*ngFor="let comment of item?.replies"
+			[comment]="comment" [favouriteItems]="favouriteItems">
 		</app-comment>
 	</mat-card>
 
